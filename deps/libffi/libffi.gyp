@@ -9,6 +9,7 @@
 {
   'variables': {
     'target_arch%': 'ia32', # built for a 32-bit CPU by default
+    'prebuilt_headers': '<!(./configure --enable-static --disable-shared --disable-builddir --with-pic)',
   },
   'target_defaults': {
     'default_configuration': 'Debug',
@@ -105,14 +106,13 @@
       ],
       'include_dirs': [
         'include',
-        # platform and arch-specific headers
-        'config/<(OS)/<(target_arch)'
+        '.'
       ],
       'direct_dependent_settings': {
         'include_dirs': [
           'include',
-          # platform and arch-specific headers
-          'config/<(OS)/<(target_arch)'
+          'config/<(OS)/<(target_arch)',
+          '.',
         ],
       },
       'conditions': [
