@@ -9,7 +9,6 @@
 {
   'variables': {
     'target_arch%': 'ia32', # built for a 32-bit CPU by default
-    'prebuilt_headers': '<!(./configure --enable-static --disable-shared --disable-builddir --with-pic)',
   },
   'target_defaults': {
     'default_configuration': 'Debug',
@@ -80,6 +79,12 @@
           },
         ],
       },
+    },
+    # else
+    {
+      'variables': {
+        'prebuilt_headers': '<!(./configure --enable-static --disable-shared --disable-builddir --with-pic)',
+      }
     }],
   ],
 
