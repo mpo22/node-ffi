@@ -148,9 +148,9 @@
               'sources!': [ 'src/x86/ffi64.c' ],
               'conditions': [
                 ['target_arch=="ia32"', {
-                  'sources': [ 'src/x86/win32.asm' ]
+                  'sources': [ 'src/x86/win32.S' ]
                 }, { # target_arch=="x64"
-                  'sources': [ 'src/x86/win64.asm' ]
+                  'sources': [ 'src/x86/win64.S' ]
                 }]
               ]
             }],

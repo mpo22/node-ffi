@@ -231,7 +231,7 @@ if [ -n "$assembly" ]; then
     if [ -z "$outdir" ]; then
       outdir="."
     fi
-    ppsrc="$outdir/$(basename $src|sed 's/.S$/.asm/g')"
+    ppsrc="$outdir/$(basename $src)"
     echo "$cl -nologo -EP $includes $defines $src > $ppsrc"
     "$cl" -nologo -EP $includes $defines $src > $ppsrc || exit $?
     output="$(echo $output | sed 's%/F[dpa][^ ]*%%g')"
