@@ -132,7 +132,7 @@ describe('ForeignFunction', function () {
   })
 
   it('should call the static "array_in_struct" bindings', function () {
-    var array_in_struct = ffi.ForeignFunction(bindings.array_in_struct, arst, [ arst ])
+    var array_in_struct = ffi.ForeignFunction(bindings.array_in_struct, 'void', [ arst, 'pointer' ])
     var a = new arst
     assert.equal(20, a.array.length)
     a.num = 69
@@ -140,7 +140,9 @@ describe('ForeignFunction', function () {
       a.array[i] = i / 3.14
     }
 
-    var b = array_in_struct(a)
+    var b = new arst
+    b.ref().fill(0)
+    array_in_struct(a, b.ref())
     assert(b instanceof arst)
     assert.equal(138, b.num)
     assert.equal(20, b.array.length)
